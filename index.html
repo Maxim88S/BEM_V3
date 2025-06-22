@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Мир кофе</title>
+  <style>
+    /* ====== Базовые переменные и сброс ====== */
+    :root {
+      --brand-brown: #4d2f24;
+      --brand-cream: #f4efe9;
+      --accent: #c78b50;
+      --text-dark: #2b2b2b;
+      --transition: .6s cubic-bezier(.4,0,.2,1);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI",Arial,sans-serif}
+    body{background:var(--brand-cream);color:var(--text-dark);overflow-x:hidden}
+
+    /* ====== Блок page ====== */
+    .page__section{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      padding:60px 20px;
+      position:relative;
+      text-align:center;
+    }
+    .page__section:nth-child(odd){background:var(--brand-cream)}
+    .page__section:nth-child(even){background:#fff}
+
+    /* ====== Анимация появления ====== */
+    .animate-fade{
+      opacity:0;
+      transform:translateY(40px);
+      transition:opacity .8s ease,transform .8s ease;
+    }
+    .animate-fade--visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* ====== Блок header ====== */
+    .header{
+      position:fixed;
+      top:0;left:0;right:0;
+      background:var(--brand-brown);
+      color:#fff;
+      padding:10px 30px;
+      z-index:10;
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    .header__logo{font-weight:700;font-size:20px}
+    .header__nav a{
+      color:#fff;
+      margin-left:15px;
+      text-decoration:none;
+      position:relative;
+    }
+    .header__nav a::after{
+      content:'';
+      position:absolute;left:0;bottom:-2px;
+      width:0;height:2px;background:var(--accent);
+      transition:width var(--transition);
+    }
+    .header__nav a:hover::after{width:100%}
+
+    /* ====== Блок story ====== */
+    .story__title,
+    .cultivation__title,
+    .game__title{
+      font-size:32px;
+      color:var(--brand-brown);
+      margin-bottom:20px;
+    }
+    .story__text,
+    .cultivation__text{
+      max-width:800px;
+      line-height:1.6;
+      margin-bottom:30px;
+      font-size:18px;
+    }
+    .story__image,
+    .cultivation__image{
+      width:80%;
+      max-width:600px;
+      border-radius:8px;
+      box-shadow:0 4px 12px rgba(0,0,0,.15);
+      margin-bottom:10px;
+    }
+
+    /* ====== Блок game ====== */
+    .game{
+      width:100%;
+      max-width:900px;
+      position:relative;
+    }
+    .game__canvas{
+      background:#fff8f3;
+      border:3px solid var(--accent);
+      width:100%;height:450px;
+      border-radius:8px;
+      box-shadow:0 4px 12px rgba(0,0,0,.12);
+    }
+    .game__score{
+      margin:15px 0;
+      font-size:20px;
+      font-weight:600;
+    }
+    .game__btn{
+      padding:12px 25px;
+      font-size:18px;
+      background:var(--brand-brown);
+      color:#fff;
+      border:none;border-radius:6px;
+      cursor:pointer;
+      transition:background .3s;
+    }
+    .game__btn:hover{background:#351e14}
+
+    /* ====== Вспомогательные ====== */
+    .visually-hidden{position:absolute;left:-9999px}
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header__logo">Мир&nbsp;Кофе</div>
+  <nav class="header__nav">
+    <a href="#history">История</a>
+    <a href="#grow">Выращивание</a>
+    <a href="#game">Игра</a>
+  </nav>
+</header>
+
+<!-- ====== Секция 1: История кофе ====== -->
+<section class="page__section story" id="history">
+  <h2 class="story__title animate-fade">Легендарная история напитка</h2>
+  <p class="story__text animate-fade">
+    Кофе прошёл невероятный путь от диких эфиопских высокогорий до уютных
+    кофейных кружек по всему миру. Согласно самой популярной легенде,
+    пастух Калди заметил, что его козы становятся бодрее после того, как
+    пощиплют красные ягоды неизвестного дерева. Любопытство привело эксперимент к монастырю, где настоятель, испытав отвар, ощутил прилив сил во время затяжных молитв. Постепенно зёрна обжаривали, измельчали и варили, распространяя рецепт по торговым путям Востока. В XV веке в Йемене появились первые публичные кофейни — «кахва-канах». Через
+    Османскую империю зерно попало в Европу, породив бурю споров: от
+    «дьявольского зелья» до «источника вдохновения». В Вене открылся
+    первый континентальный кофейный дом, а во Франции напиток получил толчок благодаря королю Людовику XV. Сегодня же кофе — это не просто утренний ритуал, а целая культура дегустаций, чемпионатов бариста,
+    латте-арта и бесконечных способов заваривания. Каждая чашка хранит
+    в себе вкус истории длительностью более тысячи лет, напоминая о
+    путешествиях морских купцов, ароматах базаров и бесчисленных людских беседах, которые начинались со слов: «Давайте выпьем кофе?».
+  </p>
+  <img class="story__image animate-fade" src="https://images.unsplash.com/photo-1513617338535-89e9cb56b51b?auto=format&fit=crop&w=1000&q=80" alt="Исторические зерна кофе">
+</section>
+
+<!-- ====== Секция 2: Выращивание и путь зерна ====== -->
+<section class="page__section cultivation" id="grow">
+  <h2 class="cultivation__title animate-fade">От зеленого зерна до ароматной обжарки</h2>
+  <p class="cultivation__text animate-fade">
+    Современные плантации кофе расстилаются узкими террасами на высоте 600 – 2200 м, где перепады температур и богатая вулканическая почва формируют сложный вкусовой профиль. Начинается всё с рассады: маленькие «солдатики» прорастают из косточек в полутени теплиц. Через 8–12 месяцев их высаживают в почву, а первый урожай появляется только
+    на третьем или четвёртом году жизни дерева. В период цветения поля покрываются белоснежными соцветиями с ароматом жасмина; спустя девять месяцев ягоды приобретают рубиновый оттенок и готовы к сбору.
+    Большинство фермеров собирают урожай вручную, отбирая лишь спелые
+    плоды. Далее следует обработка: «мытая» (с помощью воды) или «натуральная»
+    (сушка в кожуре на солнце). Обработка влияет на сладость, кислотность и тело будущей чашки. После шестинедельной сушки пергаментное зерно шлифуется, сортируется по размеру и отправляется на биржи и обжарочные производства. Обжарщик — настоящий художник: играя
+    температурой и временем, он раскрывает скрытые ноты — от шоколада и ореха до тропических фруктов. Лишь пройдя этот длинный путь, зерно окажется в вашей кофемолке, чтобы за считанные минуты превратиться
+    в насыщенный напиток, согревающий душу холодным утром.
+  </p>
+  <img class="cultivation__image animate-fade" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=80" alt="Плантации кофе">
+</section>
+
+<!-- ====== Секция 3: Мини-игра ====== -->
+<section class="page__section game-section" id="game">
+  <h2 class="game__title animate-fade">Мини-игра «Лови кофейные зёрна»</h2>
+  <div class="game animate-fade">
+    <canvas class="game__canvas" id="coffeeCanvas" width="900" height="450" aria-label="Игровое поле"></canvas>
+    <div class="game__score" id="score">Счёт: 0</div>
+    <button class="game__btn" id="startBtn">Начать игру</button>
+  </div>
+</section>
+
+<script>
+/* ====== Анимация появления секций при скролле ====== */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('animate-fade--visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.3});
+
+document.querySelectorAll('.animate-fade').forEach(el=>observer.observe(el));
+
+/* ====== Мини-игра ====== */
+class Bean{
+  constructor(x,y,speed){
+    this.x=x;
+    this.y=y;
+    this.r=15;
+    this.speed=speed;
+  }
+  draw(ctx){
+    ctx.fillStyle="#4d2f24";
+    ctx.beginPath();
+    ctx.ellipse(this.x,this.y,this.r,this.r*0.6,Math.PI/4,0,2*Math.PI);
+    ctx.fill();
+  }
+}
+const canvas=document.getElementById('coffeeCanvas');
+const ctx=canvas.getContext('2d');
+const scoreEl=document.getElementById('score');
+const startBtn=document.getElementById('startBtn');
+let beans=[],score=0,animationId,playing=false;
+
+function spawnBean(){
+  const x=Math.random()*(canvas.width-40)+20;
+  const speed=Math.random()*1+1;
+  beans.push(new Bean(x,0,speed));
+}
+
+function gameLoop(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  // рисуем и обновляем бобы
+  beans.forEach((bean,i)=>{
+    bean.y+=bean.speed;
+    bean.draw(ctx);
+    if(bean.y>canvas.height+bean.r) beans.splice(i,1);
+  });
+  // спавн новых
+  if(Math.random()<0.03) spawnBean();
+  animationId=requestAnimationFrame(gameLoop);
+}
+
+canvas.addEventListener('click',e=>{
+  if(!playing) return;
+  const rect=canvas.getBoundingClientRect();
+  const x=e.clientX-rect.left;
+  const y=e.clientY-rect.top;
+  beans.forEach((bean,i)=>{
+    const dist=Math.hypot(bean.x-x,bean.y-y);
+    if(dist<bean.r){
+      beans.splice(i,1);
+      score++;
+      scoreEl.textContent="Счёт: "+score;
+    }
+  });
+});
+
+startBtn.addEventListener('click',()=>{
+  if(playing){
+    cancelAnimationFrame(animationId);
+    playing=false;
+    startBtn.textContent='Начать игру';
+  }else{
+    // reset beans=[];score=0;scoreEl.textContent="Счёт: 0";
+    playing=true;
+    startBtn.textContent='Стоп';
+    gameLoop();
+  }
+});
+</script>
+</body>
+</html>
